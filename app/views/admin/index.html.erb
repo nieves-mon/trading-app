@@ -1,3 +1,13 @@
-<p>email: <%= current_user.email %></p>
-<p>is_admin? <%= current_user.admin? %></p>
-<li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+<%= render 'pages/header' %>
+
+<h3>ACCOUNTS</h3>
+
+<ul>
+    <% @traders.each do |trader| %>
+    <li>
+        <%= trader.email %>,
+        <% if trader.approved? %><span>approved</span><% else %><span>pending</span><% end %>
+    </li>
+    <% end %>
+</ul>
+

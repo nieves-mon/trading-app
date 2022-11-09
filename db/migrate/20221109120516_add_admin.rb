@@ -4,6 +4,7 @@ class AddAdmin < ActiveRecord::Migration[7.0]
       admin.email = 'admin@admin.com'
       admin.password = 'password'
       admin.admin = true
+      admin.approved = true
       admin.skip_confirmation!
       admin.save!
     end

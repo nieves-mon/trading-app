@@ -9,5 +9,12 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root 'pages#home'
-  resources :admin
+
+  #resources :admin
+
+  scope "admin" do
+    get "index" => "admin#index", as: :admin_index
+    #post "show" => "admin#show", as: :admin_show
+  end
+
 end
