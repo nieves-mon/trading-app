@@ -1,5 +1,4 @@
 <% if notice %><div class="alert alert-info"><span id="notice-id"><%= notice%></span></div><% end %>
-<% if alert %><div class="alert alert-warning"><span id="alert-id"><%= alert%></span></div><% end %>
 
 <% if user_signed_in? %>
     <h2>should redirected to admin#index </h2>
@@ -8,8 +7,4 @@
     <h1>This is homepage </h1>
     <li><%= link_to "Sign Up", new_user_registration_path %></li>
     <li><%= link_to "Log In", new_user_session_path %></li>
-<<<<<<< HEAD
 <% end %>
-=======
-    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
->>>>>>> 026972aeede4c7274b231b13766e177ee40fa91e
