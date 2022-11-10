@@ -2,11 +2,15 @@
 
 <h3>ACCOUNTS</h3>
 
+<p><%= link_to "Create Account", new_account_path %></p>
+
 <ul>
-    <% @traders.each do |trader| %>
+    <% @accounts.each do |trader| %>
     <li>
         <%= trader.email %>,
-        <% if trader.approved? %><span>approved</span><% else %><span>pending</span><% end %>
+        <% if trader.approved? %><span>approved</span><% else %><span>pending</span><% end %>,
+        <%= link_to "Show", account_path(trader) %> |
+        <%= link_to "Edit", edit_account_path(trader) %>
     </li>
     <% end %>
 </ul>

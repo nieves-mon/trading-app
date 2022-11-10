@@ -1,0 +1,14 @@
+<h1>Accounts#edit</h1>
+<p>Find me in app/views/accounts/edit.html.erb</p>
+
+<%= form_with(scope: @account, url: account_path, method: 'put' ) do |f| %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

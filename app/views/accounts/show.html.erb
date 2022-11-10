@@ -1,0 +1,12 @@
+<h1>Accounts#show</h1>
+<p>Find me in app/views/accounts/edit.html.erb</p>
+
+<h2>This is <%= @account.email %> details </h2>
+
+<% if @account.approved? %>
+<li>Status: Approved </li>
+<li>Confirmed at: <%= @account.confirmed_at %> </li>
+<% else %>
+<li>Status: Pending </li>
+<li>Confirmed at: <%= @account.confirmed_at %> </li>
+<% end %>

@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   scope "admin" do
     get "index" => "admin#index", as: :admin_index
-    #post "show" => "admin#show", as: :admin_show
+    #get "show" => "admin#show", as: :admin_show
+    resources :accounts
   end
 
 end
