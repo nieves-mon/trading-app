@@ -10,12 +10,14 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  #resources :admin
-
   scope "admin" do
-    get "index" => "admin#index", as: :admin_index
-    #get "show" => "admin#show", as: :admin_show
+    get "dashboard" => "admin#dashboard", as: :admin
     resources :accounts
   end
+
+  scope "traders" do
+    get "dashboard" => "traders#dashboard", as: :traders_dashboard
+  end
+
 
 end
