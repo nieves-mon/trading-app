@@ -19,9 +19,11 @@
                       when "alert" then "danger"
                       else key
                       end %>
-      <%= content_tag :div, class: "alert alert-#{alert_class} alert-dismissible fade show", role: "alert" do %>
-        <%= value %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <% if value.present? %>
+        <%= content_tag :div, class: "alert alert-#{alert_class} alert-dismissible fade show", role: "alert" do %>
+          <%= value %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <% end %>
       <% end %>
     <% end %>
 
