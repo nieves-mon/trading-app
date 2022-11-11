@@ -8,9 +8,11 @@ class Stock < ApplicationRecord
         begin
             company_name = client.company(symbol).company_name
             latest_price = client.quote(symbol).latest_price
-            new(symbol: symbol, name: company_name, price: latest_price)
+            [new(symbol: symbol, name: company_name, price: latest_price), "success"]
         rescue IEX::Errors::SymbolNotFoundError
-            nil
+            [nil, "Symbol not found. Please input a valid symbol."]
+        rescue Exception
+            [nil, "Something went wrong. Please try again."]
         end
     end
 end
