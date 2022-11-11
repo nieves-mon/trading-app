@@ -14,7 +14,7 @@ class Stock < ApplicationRecord
             [new(symbol: symbol, name: company_name, price: latest_price), "success"]
         rescue IEX::Errors::SymbolNotFoundError
             [nil, "Symbol not found. Please input a valid symbol."]
-        rescue Exception
+        rescue
             [nil, "Something went wrong. Please try again."]
         end
     end
