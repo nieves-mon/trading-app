@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <%= render 'header' %>
+
     <% flash.each do |key, value| %>
       <% alert_class = case key
                       when "notice" then "success"
