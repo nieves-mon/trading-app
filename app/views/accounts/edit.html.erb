@@ -8,7 +8,13 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <div class="checkbox-container">
+    <%= f.check_box :approved %>
+    <%= f.label "Approved?", class: "task-form-label" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Submit" %>
   </div>
+  
 <% end %>

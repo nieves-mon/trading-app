@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
     
     def admin_acess
         if current_user.admin?
-            redirect_to admin_index_path
+            redirect_to accounts_path
         end
     end
+
 end

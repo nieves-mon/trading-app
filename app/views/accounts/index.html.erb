@@ -1,0 +1,19 @@
+<%= render 'pages/header' %>
+<h3>ACCOUNTS</h3>
+
+<p><%= link_to "Create Account", new_account_path %></p>
+
+<table>
+    <tr>
+    <td><b>Email</b></td>
+    <td><b>Status</b></td>
+    <td><b>Action</b></td>
+    </tr>
+    <% @accounts.each do |account| %>
+    <tr>
+    <td><%= account.email %></td>
+    <td><% if account.approved? %><span>approved</span><% else %><span>pending</span><% end %></td>
+    <td><%= link_to "Show", account_path(account) %> | <%= link_to "Edit", edit_account_path(account) %> | <%= link_to "Delete", account_path(account), data: { turbo_method: :delete, turbo_confirm: "Are you sure to proceed?" } %></td>
+    </tr>
+    <% end %>
+</table>
