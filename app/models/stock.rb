@@ -1,4 +1,7 @@
 class Stock < ApplicationRecord
+    has_many :transactions
+    has_many :users, through :transactions
+
     def self.search(symbol)
         client = IEX::Api::Client.new(
             publishable_token: Rails.application.credentials.iex_client[:publishable_token],
