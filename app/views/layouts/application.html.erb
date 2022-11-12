@@ -13,6 +13,12 @@
   <body>
     <%= render 'header' %>
 
+    <% if user_signed_in? && !current_user.try(:approved?) %>
+      <div class="alert alert-warning" role="alert">
+          Transactions are be disabled until your account is approved. For now, you may freely navigate the website.
+      </div>
+    <% end %>
+
     <% flash.each do |key, value| %>
       <% alert_class = case key
                       when "notice" then "success"
