@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   scope "admin" do
     get "dashboard" => "admin#dashboard", as: :admin
     resources :accounts
+    get "pending" => "accounts#pending", as: :pending_account
+    patch "accounts/:id/approve" => "accounts#approve", as: :approve_account
+
   end
 
   scope "traders" do

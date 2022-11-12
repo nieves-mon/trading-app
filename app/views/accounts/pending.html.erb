@@ -1,0 +1,15 @@
+<h1> THIS IS PENDING ACCOUNTS PAGE </h1>
+
+<table>
+    <tr>
+    <td><b>Email</b></td>
+    <td><b>Action</b></td>
+    </tr>
+    <% @accounts.each do |account| %>
+    <tr>
+    <td><%= account.email %></td>
+    <td>
+    <%= link_to "Approve Account", approve_account_path(account), data: { turbo_method: :patch } %>
+    </tr>
+    <% end %>
+</table>

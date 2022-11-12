@@ -44,6 +44,17 @@ class AccountsController < ApplicationController
     redirect_to admin_index_path, notice: "Account successfully deleted"
   end
 
+  def pending
+    @accounts = User.where(approved:false)
+  end
+
+  def approve
+    @account = User.find(params[:id])
+    if @account.update(approved:true)
+      redirect_to account_path(@account), notice: "Account successfully approved"
+    end
+  end
+
   private
 
   def account_params

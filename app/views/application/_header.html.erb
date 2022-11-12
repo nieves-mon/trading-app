@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
         <% if current_user.try(:admin?) %>
-            <%= link_to "TradeX", admin_path, class: "navbar-brand" %>
+            <%= link_to "TradeX", accounts_path, class: "navbar-brand" %>
         <% else %>
             <%= link_to "TradeX", traders_dashboard_path, class: "navbar-brand" %>
         <% end %>
