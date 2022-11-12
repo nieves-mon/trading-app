@@ -6,6 +6,6 @@ class TradersController < ApplicationController
   end
 
   def trending_stocks
-    @trending_stocks = client.stock_market_list(:mostactive)
+    @trending_stocks = @client.stock_market_list(:mostactive)
   end
 end

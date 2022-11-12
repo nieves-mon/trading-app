@@ -1,0 +1,21 @@
+<h1>Trending Stocks</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Latest Price</th>
+            <th scope="col">Change</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @trending_stocks.each do |stock| %>
+            <tr>
+                <th scope="row"><%= stock.symbol %></th>
+                <td><%= stock.company_name %></td>
+                <td><%= stock.latest_price %></td>
+                <td><%= stock.change_percent_s %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
