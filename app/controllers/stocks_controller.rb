@@ -1,6 +1,9 @@
 class StocksController < ApplicationController
     before_action :initialize_iex_client
 
+    def new
+    end
+
     def search
         begin
 	        @quote = @client.quote(params[:symbol])
