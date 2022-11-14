@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title"><%= @stock.symbol %></h5>
     <p class="card-text">$<%= @stock.price %></p>
-    <%= link_to "Buy",'', class: "btn btn-success" %>
+    <%= link_to "Buy",'', class: "btn btn-success #{'disabled' if !current_user.approved?}" %>
     <%= link_to "Sell",'', class: "btn btn-danger #{'disabled' if @shares == 0}" %>
   </div>
   <div class="card-footer text-muted">
