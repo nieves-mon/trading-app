@@ -1,0 +1,11 @@
+<div class="card text-center">
+  <div class="card-header">
+    <%= @stock.name %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @stock.symbol %></h5>
+    <p class="card-text">$<%= @stock.price %></p>
+    <%= link_to "Buy", class: "btn btn-primary" %>
+    <%= link_to "Sell", class: "btn btn-primary" %>
+  </div>
+</div>
