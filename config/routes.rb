@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get "trending_stocks" => "traders#trending_stocks", as: :trending_stocks
     post "stocks" => "stocks#search", as: :search_stock
     get "stocks/:symbol" => "stocks#show", as: :stock
+    get "stocks/:symbol/buy" => "transactions#buy_stock", as: :buy_stock
   end
 
 
