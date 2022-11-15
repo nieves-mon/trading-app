@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   scope "traders" do
     get "dashboard" => "traders#dashboard", as: :traders_dashboard
     get "trending_stocks" => "traders#trending_stocks", as: :trending_stocks
-    resources :stocks
+    get "transactions" => "traders#transactions", as: :trader_transactions
+    post "stocks" => "stocks#search", as: :search_stock
+    get "stocks/:symbol" => "stocks#show", as: :stock
+    get "stocks/:symbol/buy" => "transactions#buy_stock", as: :buy_stock
+    get "stocks/:symbol/sell" => "transactions#sell_stock", as: :sell_stock
+    post "stocks/:symbol" => "transactions#save_transaction", as: :save_transaction
   end
 
 
