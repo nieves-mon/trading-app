@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
         if current_user.admin
             redirect_to accounts_path
         else
-            redirect_to traders_dashboard_path
+            redirect_to traders_portfolio_path
         end
     end
 

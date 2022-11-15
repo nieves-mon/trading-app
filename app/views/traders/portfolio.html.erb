@@ -1,2 +1,29 @@
 <h1>My Portfolio</h1>
 <%= render "search" %>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Latest Price</th>
+            <th scope="col">Total Amount</th>
+            <th scope="col">Change %</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @user_stocks.each do |user_stock| %>
+            <tr>
+                <% quote = @client.quote(user_stock.stock.symbol) %>
+                <th scope="row"><%= user_stock.stock.symbol %></th>
+                <td><%= user_stock.stock.name %></td>
+                <td><%= user_stock.quantity %></td>
+                <td>$<%= quote.latest_price %></td>
+                <td>$<%= user_stock.quantity * quote.latest_price %></td>
+                <td><%= quote.change_percent_s %></td>
+                <td><%= link_to "Buy", buy_stock_path(user_stock.stock.symbol), class: "btn btn-success" %></td>
+                <td><%= link_to "Sell", sell_stock_path(user_stock.stock.symbol), class: "btn btn-danger" %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

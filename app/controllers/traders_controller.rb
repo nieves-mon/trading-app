@@ -5,6 +5,7 @@ class TradersController < ApplicationController
 
 
   def portfolio
+    @user_stocks = current_user.user_stocks
   end
 
   def trending_stocks
