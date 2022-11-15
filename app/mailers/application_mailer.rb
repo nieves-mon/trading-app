@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: Rails.credentials.google_smtp[:email]
+  default from: Rails.application.credentials.google_smtp[:email]
   layout "mailer"
 end
