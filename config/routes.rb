@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     post "stocks" => "stocks#search", as: :search_stock
     get "stocks/:symbol" => "stocks#show", as: :stock
     get "stocks/:symbol/buy" => "transactions#buy_stock", as: :buy_stock
+    post "stocks/:symbol" => "transactions#save_transaction", as: :save_transaction
   end
 
 

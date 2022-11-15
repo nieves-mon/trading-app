@@ -3,7 +3,8 @@ class StocksController < ApplicationController
 
     def show
         @stock = Stock.find_by(symbol: params[:symbol])
-        @shares = current_user.user_stocks.find_by(stock: params[:symbol]).try(:quantity) || 0
+        @user_stock = current_user.user_stocks.find_by(stock: @stock)
+        @shares = @user_stock.try(:quantity) || 0
     end
 
     def search
