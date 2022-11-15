@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_15_081940) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "transaction_type"
+    t.integer "kind"
     t.integer "quantity"
     t.float "price"
     t.bigint "user_id", null: false
