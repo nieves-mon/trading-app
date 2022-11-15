@@ -4,7 +4,7 @@ class TradersController < ApplicationController
   before_action :authorize_trader
 
 
-  def dashboard
+  def portfolio
   end
 
   def trending_stocks
