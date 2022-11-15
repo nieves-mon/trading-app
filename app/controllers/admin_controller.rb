@@ -2,7 +2,7 @@ class AdminController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_admin
     
-    def dashboard
+    def transactions
         @transactions = Transaction.all
     end
     

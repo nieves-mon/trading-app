@@ -13,7 +13,7 @@
     <tbody>
         <% @transactions.each do |transaction| %>
             <tr>
-                <td><%= transaction.created_at.strftime("%b %d, %Y @ %l:%M %p") %></td>
+                <td><%= transaction.created_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %></td>
                 <td><%= transaction.stock.name %></td>
                 <td><%= transaction.quantity %></td>
                 <td>$<%= transaction.price %></td>
