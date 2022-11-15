@@ -25,6 +25,7 @@ class TransactionsController < ApplicationController
                 @user_stock.save
             end
 
+            flash[:success] = "You successfully #{@transaction.buy? ? 'bought' : 'sold'} #{@transaction.quantity} shares of #{@stock.symbol} stock!"
             redirect_to stock_path(@stock.symbol)
         else
             flash[:alert] = "Something went wrong"
@@ -34,7 +35,7 @@ class TransactionsController < ApplicationController
 
     private
         def transaction_params
-            params.require(:transaction).permit(:transaction_type, :quantity, :price, :stock_id)
+            params.require(:transaction).permit(:kind, :quantity, :price, :stock_id)
         end
 
         def set_stock
