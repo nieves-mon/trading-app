@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
     before_action :initialize_iex_client
+    before_action :authorize_trader
 
     def show
         @stock = Stock.find_by(symbol: params[:symbol])

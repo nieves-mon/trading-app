@@ -1,6 +1,8 @@
 class TradersController < ApplicationController
   before_action :authenticate_user!
   before_action :initialize_iex_client
+  before_action :authorize_trader
+
 
   def dashboard
   end

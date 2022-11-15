@@ -27,5 +27,4 @@ Rails.application.routes.draw do
     post "stocks/:symbol" => "transactions#save_transaction", as: :save_transaction
   end
 
-
 end

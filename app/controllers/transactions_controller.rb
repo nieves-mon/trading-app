@@ -1,4 +1,6 @@
 class TransactionsController < ApplicationController
+    before_action :authenticate_user!
+    before_action :authorize_trader
     before_action :set_stock
 
     def buy_stock

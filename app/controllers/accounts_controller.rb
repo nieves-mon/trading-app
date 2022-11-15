@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
+  before_action :authorize_admin
 
   def index
     @accounts = User.where(admin:false)
@@ -41,7 +42,7 @@ class AccountsController < ApplicationController
   def destroy
     @account = User.find(params[:id])
     @account.destroy
-    redirect_to admin_index_path, notice: "Account successfully deleted"
+    redirect_to accounts_path, notice: "Account successfully deleted"
   end
 
   def pending
