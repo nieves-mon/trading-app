@@ -8,4 +8,8 @@ class TradersController < ApplicationController
   def trending_stocks
     @trending_stocks = @client.stock_market_list(:mostactive)
   end
+
+  def transactions
+    @transactions = current_user.transactions.order(created_at: :desc)
+  end
 end
