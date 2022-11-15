@@ -5,6 +5,10 @@ class TransactionsController < ApplicationController
         @transaction = Transaction.new
     end
 
+    def sell_stock
+        @transaction = Transaction.new
+    end
+
     def save_transaction
         @transaction = current_user.transactions.build(transaction_params)
 
