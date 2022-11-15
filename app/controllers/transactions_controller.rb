@@ -11,6 +11,7 @@ class TransactionsController < ApplicationController
 
     def save_transaction
         @transaction = current_user.transactions.build(transaction_params)
+        @transaction.amount = transaction_params[:quantity].to_i * transaction_params[:price].to_f
 
         if @transaction.save
             @user_stock = current_user.user_stocks.find_by(stock: @stock)
