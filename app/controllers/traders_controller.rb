@@ -5,7 +5,7 @@ class TradersController < ApplicationController
 
 
   def portfolio
-    @user_stocks = current_user.user_stocks
+    @user_stocks = current_user.user_stocks.where("quantity > ?", 0)
   end
 
   def trending_stocks
