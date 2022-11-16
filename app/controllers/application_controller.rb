@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+private
     def admin_access
         if current_user.admin
             redirect_to accounts_path
