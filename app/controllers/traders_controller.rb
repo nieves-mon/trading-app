@@ -4,8 +4,7 @@ class TradersController < ApplicationController
   before_action :authorize_trader
 
 
-  def portfolio
-    @user_stocks = current_user.user_stocks.where("quantity > ?", 0)
+  def dashboard
   end
 
   def trending_stocks
