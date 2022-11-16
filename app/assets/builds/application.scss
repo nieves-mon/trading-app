@@ -9,6 +9,7 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -19988,4 +19989,15 @@ fieldset:disabled .btn {
 
 .bi-fuel-pump::before {
   content: "\f83e";
+}
+
+// manual css
+
+.form-container {
+  width: 45%;
+}
+
+.form-container-container {
+  display: flex;
+  justify-content: center;
 }

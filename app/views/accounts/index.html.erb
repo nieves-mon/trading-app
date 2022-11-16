@@ -1,22 +1,23 @@
 
-<h3>ACCOUNTS</h3>
+<h1>All Accounts</h1>
 
 <p>
-<%= link_to "Create Account", new_account_path %> | 
-<%= link_to "Pending Accounts", pending_account_path, class: "navbar-brand" %>
+<%= link_to "Create Account", new_account_path, class:"btn btn-primary" %>
 </p>
 
-<table>
+<table class="table">
+    <thead>
     <tr>
-    <td><b>Email</b></td>
-    <td><b>Status</b></td>
-    <td><b>Action</b></td>
+    <th scope="col">Email</th>
+    <th scope="col">Creation Date</th>
+    <th scope="col">Status</th>
     </tr>
+    </thead>
     <% @accounts.each do |account| %>
     <tr>
-    <td><%= account.email %></td>
+    <td><%= link_to account.email, account_path(account) %></td>
+    <td><%= account.created_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %></td>
     <td><% if account.approved? %><span>approved</span><% else %><span>pending</span><% end %></td>
-    <td><%= link_to "Show", account_path(account) %> | <%= link_to "Edit", edit_account_path(account) %> | <%= link_to "Delete", account_path(account), data: { turbo_method: :delete, turbo_confirm: "Are you sure to proceed?" } %></td>
     </tr>
     <% end %>
 </table>

@@ -1,12 +1,34 @@
 <h1>Account Details</h1>
-<p>Find me in app/views/accounts/edit.html.erb</p>
+<p><%= link_to "Edit", edit_account_path(@account), class:"btn btn-warning" %> <%= link_to "Delete", account_path(@account), data: { turbo_method: :delete, turbo_confirm: "Are you sure to proceed?" }, class:"btn btn-danger" %></p>
 
-<h2>This is <%= @account.email %> details </h2>
+<table class="table">
+
+    <tr>
+        <td><b>Email:</b></td>
+        <td><%= @account.email %></td>
+    </tr>
 
 <% if @account.approved? %>
-<li>Status: Approved </li>
-<li>Confirmed at: <%= @account.confirmed_at %> </li>
+    <tr>
+        <td><b>Account Status:</b></td>
+        <td>Approved</td>
+    </tr>
+
+    <tr>
+    <td><b>Confirmation Status:</b></td>
+    <td><%= @account.confirmed_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %></td>
+    </tr>
+    
 <% else %>
-<li>Status: Pending </li>
-<li>Confirmed at: <%= @account.confirmed_at %> </li>
+    <tr>
+        <td><b>Account Status:</b></td>
+        <td>Pending</td>
+    </tr>
+
+    <tr>
+    <td><b>Confirmation Status:</b></td>
+    <td><% if @account.confirmed_at == nil %> Unconfirmed <% else %><%= @account.confirmed_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %><% end %></td>
+    </tr>
 <% end %>
+
+</table>

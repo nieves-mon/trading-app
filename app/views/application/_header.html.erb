@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <%= link_to "Transactions", admin_path, class: "nav-link" %>
                 </li>
+                <li class="nav-item">
+                <%= link_to "Pending Accounts", pending_account_path, class: "nav-link" %>
+                </li>
             <% else %>
                 <li class="nav-item">
                     <%= link_to "Dashboard", traders_dashboard_path, class: "nav-link" %>

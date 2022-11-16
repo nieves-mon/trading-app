@@ -1,20 +1,26 @@
-<h1>Accounts#edit</h1>
-<p>Find me in app/views/accounts/edit.html.erb</p>
+<div>
+<div class="form-container-container">
+<div class="form-container">
+<h1>Edit Trader Account</h1>
 
 <%= form_with(scope: @account, url: account_path, method: 'put' ) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-outline mb-4">
+    <%= f.label :email, class:"form-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"form2Example1", class:"form-control" %>
   </div>
 
-  <div class="checkbox-container">
+  <div class="form-outline mb-4">
     <%= f.check_box :approved %>
-    <%= f.label "Approved?", class: "task-form-label" %>
+    <%= f.label "Approved?", class:"form-label" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit", class:"btn btn-primary btn-block mb-4" %>
   </div>
   
 <% end %>
+
+</div>
+</div>
+</div>

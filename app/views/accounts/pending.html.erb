@@ -1,6 +1,6 @@
 <h1> Pending Accounts</h1>
 
-<table>
+<table class="table">
     <tr>
     <td><b>Email</b></td>
     <td><b>Action</b></td>
@@ -9,7 +9,7 @@
     <tr>
     <td><%= account.email %></td>
     <td>
-    <%= link_to "Approve Account", approve_account_path(account), data: { turbo_method: :patch } %>
+    <%= link_to "Approve", approve_account_path(account), data: { turbo_method: :patch }, class:"btn btn-success" %>
     </tr>
     <% end %>
 </table>
