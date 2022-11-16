@@ -52,6 +52,7 @@ class AccountsController < ApplicationController
   def approve
     @account = User.find(params[:id])
     if @account.update(approved:true)
+      UserMailer.with(user: @account).approved_email.deliver_later
       redirect_to account_path(@account), notice: "Account successfully approved"
     end
   end
