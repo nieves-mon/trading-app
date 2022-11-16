@@ -61,6 +61,7 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "trading_app_production"
+  config.action_mailer.default_url_options = { host: 'tradex.up.railway.app', protocol: 'https' }
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
