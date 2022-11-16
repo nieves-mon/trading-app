@@ -6,7 +6,7 @@
         <% if current_user.try(:admin?) %>
             <%= link_to "TradeX", accounts_path, class: "navbar-brand" %>
         <% else %>
-            <%= link_to "TradeX", traders_dashboard_path, class: "navbar-brand" %>
+            <%= link_to "TradeX", traders_portfolio_path, class: "navbar-brand" %>
         <% end %>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -20,6 +20,12 @@
                 </li>
             <% else %>
                 <li class="nav-item">
+<<<<<<< HEAD
+=======
+                    <%= link_to "Portfolio", traders_portfolio_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+>>>>>>> 24e634591b2e2429d9b97c6d5318dea5833a2384
                     <%= link_to "Transactions", trader_transactions_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
@@ -30,10 +36,21 @@
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
-            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+            <li class="nav-item">
+              <%= link_to edit_user_registration_path, class: "nav-link"  do %>
+                <%= current_user.email %>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
         <% else %>
-            <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
-            <li><%= link_to "Log In", new_user_session_path, class: "nav-link" %></li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+            </li>
         <% end %>
       </ul>
     </div>
