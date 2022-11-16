@@ -33,10 +33,16 @@
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
-            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+            <li class="nav-item">
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
         <% else %>
-            <li><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
-            <li><%= link_to "Log In", new_user_session_path, class: "nav-link" %></li>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+            </li>
         <% end %>
       </ul>
     </div>
