@@ -3,7 +3,7 @@ class Stock < ApplicationRecord
     has_many :users, through: :transactions
     has_many :user_stocks
 
-    validates :symbol, :name, :price, presence: true
+    validates :symbol, :name, presence: true
 
     def quote
         begin

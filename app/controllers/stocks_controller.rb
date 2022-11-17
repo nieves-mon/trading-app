@@ -21,12 +21,7 @@ class StocksController < ApplicationController
                 @stock = Stock.new
                 @stock.symbol = @quote.symbol
                 @stock.name = @quote.company_name
-                @stock.price = @quote.latest_price
-                @stock.change_percent = @quote.change_percent_s
                 @stock.save
-            else
-                @stock.update_attribute(:price, @quote.latest_price)
-                @stock.update_attribute(:change_percent, @quote.change_percent_s)
             end
 
             redirect_to stock_path(@stock.symbol)
