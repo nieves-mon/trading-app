@@ -19,7 +19,9 @@
             <tbody>
                 <% @user_stocks.each_with_index do |user_stock, i| %>
                     <tr>
-                        <th scope="row"><%= user_stock.stock.symbol %></th>
+                        <th scope="row">
+                            <%= link_to user_stock.stock.symbol, search_stock_path(symbol: user_stock.stock.symbol), data: { turbo_method: "post" } %>
+                        </th>
                         <td><%= user_stock.stock.name %></td>
                         <td><%= user_stock.quantity %></td>
                         <td>$<%= @quotes[i].latest_price %></td>
