@@ -15,4 +15,11 @@ class TradersController < ApplicationController
   def transactions
     @transactions = current_user.transactions.order(created_at: :desc)
   end
+
+  private
+  
+  def authorize_trader
+    render status: 401 if current_user.admin
+  end
+
 end
