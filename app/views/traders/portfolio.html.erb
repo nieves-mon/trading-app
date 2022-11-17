@@ -23,7 +23,7 @@
                         <td><%= user_stock.stock.name %></td>
                         <td><%= user_stock.quantity %></td>
                         <td>$<%= @quotes[i].latest_price %></td>
-                        <td>$<%= user_stock.quantity * @quotes[i].latest_price %></td>
+                        <td>$<%= (user_stock.quantity * @quotes[i].latest_price).round(2) %></td>
                         <td><%= @quotes[i].change_percent_s %></td>
                         <td><%= link_to "Buy", buy_stock_path(user_stock.stock.symbol), class: "btn btn-success" %></td>
                         <td><%= link_to "Sell", sell_stock_path(user_stock.stock.symbol), class: "btn btn-danger" %></td>
