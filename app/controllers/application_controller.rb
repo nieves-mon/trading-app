@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
 private
+
     def admin_access
         if current_user.admin
             redirect_to accounts_path
@@ -10,10 +11,6 @@ private
 
     def authorize_admin
         render status: 401 unless current_user.admin
-    end
-
-    def authorize_trader
-        render root_path unless current_user.admin == false
     end
 
     def initialize_iex_client
