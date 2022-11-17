@@ -9,6 +9,13 @@ class StocksController < ApplicationController
         @stock = Stock.find_by(symbol: params[:symbol])
         @user_stock = current_user.user_stocks.find_by(stock: @stock)
         @shares = @user_stock.try(:quantity) || 0
+
+        begin
+	        @quote = @client.quote(@stock.symbol)
+        rescue IEX::Errors::SymbolNotFoundError
+            flash[:danger] = "Symbol not found. Please input a valid symbol."
+            render :new
+        end
     end
 
     def search

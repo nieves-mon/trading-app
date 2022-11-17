@@ -4,7 +4,7 @@
   </div>
   <div class="card-body">
     <h5 class="card-title"><%= @stock.symbol %></h5>
-    <p class="card-text">$<%= @stock.quote.latest_price %></p>
+    <p class="card-text">$<%= @quote.latest_price %></p>
     <%= link_to "Buy", buy_stock_path(@stock.symbol), class: "btn btn-success #{'disabled' if !current_user.approved?}" %>
     <%= link_to "Sell", sell_stock_path(@stock.symbol), class: "btn btn-danger #{'disabled' if @shares == 0}" %>
   </div>
