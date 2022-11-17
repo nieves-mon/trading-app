@@ -1,6 +1,7 @@
-<div>
-<div class="form-container-container">
-<div class="form-container">
+<div class="container mt-5">
+<div class="row d-flex justify-content-center">
+<div class="col-md-6">
+<div class="border border-secondary rounded-4 px-4 py-4" id="form1">
 
 <h2>Log in</h2>
 
@@ -17,7 +18,7 @@
 
   <div class="row mb-4">
 
-    <div class="col d-flex justify-content-center">
+    <div class="col d-flex justify-content-left">
       <% if devise_mapping.rememberable? %>
       <div class="form-check">
           <%= f.check_box :remember_me, class:"form-check-input", id:"form2Example31" %>
@@ -26,11 +27,6 @@
       <% end %>
     </div>
 
-    <div class="col">
-    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-      <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-    <% end %>
-    </div>
 
   </div>
 
@@ -41,6 +37,7 @@
 
 <%= render "devise/shared/links" %>
 
+</div>
 </div>
 </div>
 </div>
