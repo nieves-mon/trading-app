@@ -8,8 +8,8 @@
                     <div class="form-outline mb-4">
                         <%= f.text_field :symbol, onkeyup: "this.value = this.value.toUpperCase();", placeholder: "AMZN, TSLA, ...", class: "form-control" %>
                     </div>
-                    <div class="actions">
-                        <%= f.submit "Search Stock", class: "btn btn-primary" %>
+                    <div class="col text-center">
+                            <%= f.submit "Search Stock", class: "btn btn-primary" %>
                     </div>
                 <% end %>
             </div>
