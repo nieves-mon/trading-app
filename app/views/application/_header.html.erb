@@ -1,32 +1,32 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg" id="header">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
         <% if current_user.try(:admin?) %>
-            <%= link_to "TradeX", accounts_path, class: "navbar-brand" %>
+            <%= link_to "TradeX", accounts_path, class: "navbar-brand text-light fw-bold" %>
         <% else %>
-            <%= link_to "TradeX", traders_portfolio_path, class: "navbar-brand" %>
+            <%= link_to "TradeX", traders_portfolio_path, class: "navbar-brand text-light fw-bold" %>
         <% end %>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
             <% if current_user.try(:admin?) %>
                 <li class="nav-item">
-                    <%= link_to "Transactions", admin_path, class: "nav-link" %>
+                    <%= link_to "Transactions", admin_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                <%= link_to "Pending Accounts", pending_account_path, class: "nav-link" %>
+                <%= link_to "Pending Accounts", pending_account_path, class: "nav-link text-light" %>
                 </li>
             <% else %>
                 <li class="nav-item">
-                    <%= link_to "Portfolio", traders_portfolio_path, class: "nav-link" %>
+                    <%= link_to "Portfolio", traders_portfolio_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to "Transactions", trader_transactions_path, class: "nav-link" %>
+                    <%= link_to "Transactions", trader_transactions_path, class: "nav-link text-light" %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to "Trending", trending_stocks_path, class: "nav-link" %>
+                    <%= link_to "Trending", trending_stocks_path, class: "nav-link text-light" %>
                 </li>
             <% end %>
         <% end %>
@@ -34,19 +34,19 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to edit_user_registration_path, class: "nav-link"  do %>
+              <%= link_to edit_user_registration_path, class: "nav-link text-light"  do %>
                 <%= current_user.email %>
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
             </li>
         <% else %>
             <li class="nav-item">
-              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+              <%= link_to "Sign Up", new_user_registration_path, class: "nav-link text-light" %>
             </li>
             <li class="nav-item">
-              <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+              <%= link_to "Log In", new_user_session_path, class: "nav-link text-light" %>
             </li>
         <% end %>
       </ul>

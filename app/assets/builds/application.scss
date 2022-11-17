@@ -19992,11 +19992,11 @@ fieldset:disabled .btn {
 }
 
 // manual css
-.form-container {
-  width: 45%;
+#header {
+  background-color: #5c4494;
+  z-index: 10;
 }
 
-.form-container-container {
-  display: flex;
-  justify-content: center;
+body {
+  background-color: #c5b8aa;
 }

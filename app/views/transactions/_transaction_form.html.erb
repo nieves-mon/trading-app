@@ -1,4 +1,5 @@
 <h1><%= stock.symbol %></h1>
+<hr/>
 <%= form_with(scope: @transaction, url: save_transaction_path) do |f| %>
     <%= f.hidden_field :stock_id, value: stock.id %>
     <%= f.hidden_field :kind, {value: kind} %>
