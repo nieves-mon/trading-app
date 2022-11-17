@@ -4,7 +4,7 @@
 <div class="border border-secondary rounded-4 px-4 py-4" id="form1">
 
 <h2>Log in</h2>
-
+<hr/>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-outline mb-4">
     <%= f.label :email, class:"form-label" %><br />
@@ -30,7 +30,7 @@
 
   </div>
 
-  <div class="actions">
+  <div class="d-grid gap-2 col-6 mx-auto">
     <%= f.submit "Log in", class:"btn btn-primary btn-block mb-4" %>
   </div>
 <% end %>

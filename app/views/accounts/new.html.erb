@@ -1,9 +1,9 @@
 <div class="container mt-5">
 <div class="row d-flex justify-content-center">
 <div class="col-md-6">
-<div class="px-4 py-4" id="form1">
+<div class="border border-secondary rounded-4 px-4 py-4" id="form1">
 <h1>New Trader Account</h1>
-
+<hr/>
 <%= form_with(scope: @account, url: accounts_path) do |f| %>
 
   <div class="form-outline mb-4">
@@ -24,7 +24,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", id:"form2Example2", class:"form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="d-grid gap-2 col-6 mx-auto">
     <%= f.submit "Submit", class:"btn btn-primary btn-block mb-4" %>
   </div>
 <% end %>
