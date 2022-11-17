@@ -5,6 +5,13 @@ class TradersController < ApplicationController
 
   def portfolio
     @user_stocks = current_user.user_stocks.where("quantity > ?", 0)
+
+    begin
+      @quotes = @user_stocks.map { |user_stock| @client.quote(user_stock.stock.symbol)}
+    rescue IEX::Errors::SymbolNotFoundError
+        flash[:danger] = "Symbol not found. Please input a valid symbol."
+        render :new
+    end
   end
 
   def trending_stocks
