@@ -1,3 +1,6 @@
+<div class="container mt-4">
+<div class="row d-flex justify-content-center border border-secondary px-4 py-4 rounded">
+
 <h1>Account Details</h1>
 <p><%= link_to "Edit", edit_account_path(@account), class:"btn btn-warning" %> <%= link_to "Delete", account_path(@account), data: { turbo_method: :delete, turbo_confirm: "Are you sure to proceed?" }, class:"btn btn-danger" %></p>
 
@@ -32,3 +35,6 @@
 <% end %>
 
 </table>
+
+</div>
+</div>
