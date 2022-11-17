@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <div class="border border-secondary rounded-4 px-4 py-4" id="form1">
+                <h2>Search Stock</h2>
+                <p>Type in the symbol of the stock you're interested in</p>
+                <%= form_with(scope: @stock, url: search_stock_path, data: { turbo: false }) do |f| %>
+                    <div class="form-outline mb-4">
+                        <%= f.text_field :symbol, onkeyup: "this.value = this.value.toUpperCase();", placeholder: "AMZN, TSLA, ...", class: "form-control" %>
+                    </div>
+                    <div class="col text-center">
+                            <%= f.submit "Search Stock", class: "btn btn-primary" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

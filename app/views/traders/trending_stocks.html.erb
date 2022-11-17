@@ -14,7 +14,9 @@
     <tbody>
         <% @trending_stocks.each do |stock| %>
             <tr>
-                <th scope="row"><%= stock.symbol %></th>
+                <th scope="row">
+                    <%= link_to stock.symbol, search_stock_path(symbol: stock.symbol), data: { turbo_method: "post" } %>
+                </th>
                 <td><%= stock.company_name %></td>
                 <td>$<%= stock.latest_price %></td>
                 <td><%= stock.change_percent_s %></td>
