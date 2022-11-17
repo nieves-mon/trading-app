@@ -11,7 +11,7 @@ class Stock < ApplicationRecord
             return client.quote(self.symbol)
         rescue IEX::Errors::SymbolNotFoundError
             flash[:danger] = "Symbol not found. Please input a valid symbol."
-            render :new
+            render :back
         end
     end
 end

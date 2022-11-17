@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   scope "traders" do
+    resources :stocks, only: [:new]
     get "portfolio" => "traders#portfolio", as: :traders_portfolio
     get "trending_stocks" => "traders#trending_stocks", as: :trending_stocks
     get "transactions" => "traders#transactions", as: :trader_transactions

@@ -2,6 +2,9 @@ class StocksController < ApplicationController
     before_action :initialize_iex_client
     before_action :authorize_trader
 
+    def new
+    end
+
     def show
         @stock = Stock.find_by(symbol: params[:symbol])
         @user_stock = current_user.user_stocks.find_by(stock: @stock)
