@@ -2,16 +2,22 @@
   <div class="row d-flex align-content-center justify-content-center">
     <div class="col-md-6">
       <div class="card text-center">
-        <div class="card-header">
+        <div class="card-header fs-4">
           <%= @stock.name %>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= @stock.symbol %></h5>
-          <p class="card-text">$<%= @quote.latest_price %></p>
-          <%= link_to "Buy", buy_stock_path(@stock.symbol), class: "btn btn-success #{'disabled' if !current_user.approved?}" %>
-          <%= link_to "Sell", sell_stock_path(@stock.symbol), class: "btn btn-danger #{'disabled' if @shares == 0}" %>
+          <h1 class="card-title fw-bold"><%= @stock.symbol %></h1>
+          <p class="card-text fw-semibold fs-3">$<%= @quote.latest_price %></p>
+          <div class="row justify-content-center">
+            <div class="col text-center d-grid col-3">
+              <%= link_to "Buy", buy_stock_path(@stock.symbol), class: "btn btn-success #{'disabled' if !current_user.approved?}" %>
+            </div>
+            <div class="col text-center d-grid col-3">
+              <%= link_to "Sell", sell_stock_path(@stock.symbol), class: "btn btn-danger #{'disabled' if @shares == 0}" %>
+            </div>
+          </div>
         </div>
-        <div class="card-footer text-muted">
+        <div class="card-footer text-muted fw-semibold fs-5">
           You have <%= @shares %> shares
         </div>
       </div>
