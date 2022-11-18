@@ -1,5 +1,16 @@
-<h1><%= stock.symbol %></h1>
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-auto text-center">
+        <h1><%= stock.symbol %></h1>
+    </div>
+</div>
+<div class="row align-items-center justify-content-center">
+    <div class="col-md-auto text-center">
+        <h5><%= stock.name %></h5>
+    </div>
+</div>
+
 <hr/>
+
 <%= form_with(scope: @transaction, url: save_transaction_path) do |f| %>
     <%= f.hidden_field :stock_id, value: stock.id %>
     <%= f.hidden_field :kind, {value: kind} %>
