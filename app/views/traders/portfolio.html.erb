@@ -33,13 +33,16 @@
                         <td class="text-center"><%= user_stock.quantity %></td>
                         <td class="text-center">$<%= @quotes[i].latest_price %></td>
                         <td class="text-center">$<%= (user_stock.quantity * @quotes[i].latest_price).round(2) %></td>
-                        <td class="text-center"><%= @quotes[i].change_percent_s %></td>
+                        <% if @quotes[i].change_percent_s.start_with? '+' %>
+                            <td class="text-center text-success"><%= @quotes[i].change_percent_s %><td>
+                        <% else %>
+                            <td class="text-center text-danger"><%= @quotes[i].change_percent_s %><td>
+                        <% end %>
                         <td><%= link_to "Buy", buy_stock_path(user_stock.stock.symbol), class: "btn btn-success" %></td>
                         <td><%= link_to "Sell", sell_stock_path(user_stock.stock.symbol), class: "btn btn-danger" %></td>
                     </tr>
                 <% end %>
             </tbody>
         </table>
-
     </div>
 </div>
