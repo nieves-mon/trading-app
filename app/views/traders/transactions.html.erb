@@ -1,28 +1,28 @@
 <div class="container mt-4">
 <div class="row d-flex justify-content-center border px-4 py-4 rounded-4 bg-light">
 
-<h1>My Transactions</h1>
+<h1 class="fw-bold">My Transactions</h1>
 <hr/>
 <table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">Date</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Shares</th>
-            <th scope="col">Price/Share</th>
-            <th scope="col">Total Amount</th>
-            <th scope="col">Type</th>
+            <th scope="col" class="text-center">Stock</th>
+            <th scope="col" class="text-center">Shares</th>
+            <th scope="col" class="text-center">Price/Share</th>
+            <th scope="col" class="text-center">Total Amount</th>
+            <th scope="col" class="text-center">Type</th>
         </tr>
     </thead>
     <tbody>
         <% @transactions.each do |transaction| %>
             <tr>
                 <td><%= transaction.created_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %></td>
-                <td><%= transaction.stock.symbol %></td>
-                <td><%= transaction.quantity %></td>
-                <td>$<%= transaction.price %></td>
-                <td>$<%= transaction.amount %></td>
-                <td><%= transaction.kind %></td>
+                <td class="text-center"><%= transaction.stock.symbol %></td>
+                <td class="text-center"><%= transaction.quantity %></td>
+                <td class="text-center">$<%= transaction.price %></td>
+                <td class="text-center">$<%= transaction.amount %></td>
+                <td class="text-center"><%= transaction.kind %></td>
             </tr>
         <% end %>
     </tbody>

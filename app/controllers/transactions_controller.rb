@@ -2,9 +2,12 @@ class TransactionsController < ApplicationController
     before_action :authenticate_user!
     before_action :authorize_trader
     before_action :set_stock
+    before_action :initialize_iex_client, except: [:save_transaction]
+    before_action :get_quote, except: [:save_transaction]
 
     def buy_stock
         @transaction = Transaction.new
+
     end
 
     def sell_stock
@@ -27,7 +30,7 @@ class TransactionsController < ApplicationController
                 @user_stock.save
             end
 
-            flash[:success] = "You successfully #{@transaction.buy? ? 'bought' : 'sold'} #{@transaction.quantity} shares of #{@stock.symbol} stock!"
+            flash[:success] = "You successfully #{@transaction.buy? ? 'bought' : 'sold'} #{@transaction.quantity} share#{'s' if @transaction.quantity > 1} of #{@stock.symbol} stock!"
             redirect_to stock_path(@stock.symbol)
         else
             flash[:alert] = "Something went wrong"
@@ -42,5 +45,9 @@ class TransactionsController < ApplicationController
 
         def set_stock
             @stock = Stock.find_by(symbol: params[:symbol])
+        end
+
+        def get_quote
+            @quote = @client.quote(@stock.symbol)
         end
 end

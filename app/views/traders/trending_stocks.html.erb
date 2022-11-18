@@ -1,15 +1,15 @@
 <div class="container mt-4">
 <div class="row d-flex justify-content-center border px-4 py-4 rounded-4 bg-light">
 
-<h1>Trending Stocks</h1>
+<h1 class="fw-bold">Trending Stocks</h1>
 <hr/>
 <table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Symbol</th>
             <th scope="col">Name</th>
-            <th scope="col">Latest Price</th>
-            <th scope="col">Change</th>
+            <th scope="col" class="text-center">Latest Price</th>
+            <th scope="col" class="text-center">Change</th>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +19,12 @@
                     <%= link_to stock.symbol, search_stock_path(symbol: stock.symbol), data: { turbo_method: "post" } %>
                 </th>
                 <td><%= stock.company_name %></td>
-                <td>$<%= stock.latest_price %></td>
-                <td><%= stock.change_percent_s %></td>
+                <td class="text-center">$<%= stock.latest_price %></td>
+                <% if stock.change_percent_s.start_with? '+' %>
+                    <td class="text-center text-success"><%= stock.change_percent_s %><td>
+                <% else %>
+                    <td class="text-center text-danger"><%= stock.change_percent_s %><td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>

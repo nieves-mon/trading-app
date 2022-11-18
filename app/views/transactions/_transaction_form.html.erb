@@ -1,29 +1,46 @@
-<h1><%= stock.symbol %></h1>
-<hr/>
-<%= form_with(scope: @transaction, url: save_transaction_path) do |f| %>
-    <%= f.hidden_field :stock_id, value: stock.id %>
-    <%= f.hidden_field :kind, {value: kind} %>
-    <%= f.hidden_field :price, value: stock.price %>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <div class="border rounded-4 bg-light px-4 py-4" id="form1">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-auto text-center">
+                        <h1 class="fw-bold"><%= stock.symbol %></h1>
+                    </div>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-auto text-center">
+                        <h5><%= stock.name %></h5>
+                    </div>
+                </div>
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <span>Price</span>
-        </div>
-        <div class="col-auto">
-            <span>$<%= stock.price %></span>
+                <hr/>
+
+                <%= form_with(scope: @transaction, url: save_transaction_path) do |f| %>
+                    <%= f.hidden_field :stock_id, value: stock.id %>
+                    <%= f.hidden_field :kind, {value: kind} %>
+                    <%= f.hidden_field :price, value: @quote.latest_price %>
+                    <div class="row g-3 align-items-center justify-content-center">
+                        <div class="col-auto">
+                            <span class="fs-4 fw-semibold">Price: $<%= @quote.latest_price %></span>
+                        </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <div class="row g-3 align-items-center justify-content-center">
+                            <div class="col-auto">
+                                <%= f.label :quantity, "Quantity:", class: "form-label fs-4 fw-semibold" %>
+                            </div>
+                            <div class="col">
+                                <%= f.number_field :quantity, class: "form-control fs-4", min: 1, value: 1 %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col text-center d-grid gap-2 col-4 mx-auto">
+                        <%= f.submit label, class: "fw-semibold btn #{kind == "buy" ? 'btn-success' : 'btn-danger'}" %>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
-
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <%= f.label :quantity, class: "form-label" %>
-        </div>
-        <div class="col-auto">
-            <%= f.number_field :quantity, class: "form-control", min: 1, value: 1 %>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <%= f.submit "Buy", class: "btn btn-success" %>
-    </div>
-<% end %>
+</div>
