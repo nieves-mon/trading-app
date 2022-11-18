@@ -3,14 +3,14 @@
 <%= form_with(scope: @transaction, url: save_transaction_path) do |f| %>
     <%= f.hidden_field :stock_id, value: stock.id %>
     <%= f.hidden_field :kind, {value: kind} %>
-    <%= f.hidden_field :price, value: stock.price %>
+    <%= f.hidden_field :price, value: @quote.latest_price %>
 
     <div class="row g-3 align-items-center">
         <div class="col-auto">
             <span>Price</span>
         </div>
         <div class="col-auto">
-            <span>$<%= stock.price %></span>
+            <span>$<%= @quote.latest_price %></span>
         </div>
     </div>
 
