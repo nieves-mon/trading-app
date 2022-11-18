@@ -15,23 +15,24 @@
     <%= f.hidden_field :stock_id, value: stock.id %>
     <%= f.hidden_field :kind, {value: kind} %>
     <%= f.hidden_field :price, value: @quote.latest_price %>
-
     <div class="row g-3 align-items-center">
         <div class="col-auto">
             <span class="fs-5 fw-semibold">Price: $<%= @quote.latest_price %></span>
         </div>
     </div>
 
-    <div class="row g-3 align-items-center">
-        <div class="col-auto">
-            <%= f.label :quantity, "Quantity:", class: "form-label fs-5 fw-semibold" %>
-        </div>
-        <div class="col-auto">
-            <%= f.number_field :quantity, class: "form-control", min: 1, value: 1 %>
+    <div class="form-outline mb-4">
+        <div class="row g-3 align-items-center">
+            <div class="col-auto">
+                <%= f.label :quantity, "Quantity:", class: "form-label fs-5 fw-semibold" %>
+            </div>
+            <div class="col-auto">
+                <%= f.number_field :quantity, class: "form-control", min: 1, value: 1 %>
+            </div>
         </div>
     </div>
 
-    <div class="mb-3">
+    <div class="col text-center d-grid gap-2 col-4 mx-auto">
         <%= f.submit "Buy", class: "btn btn-success" %>
     </div>
 <% end %>
