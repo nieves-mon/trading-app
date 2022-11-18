@@ -6,7 +6,7 @@
                     <h1>My Portfolio</h1>
                 </div>
                 <div class="col-md-auto">
-                    <%= link_to "+ Buy Stock", new_stock_path, class: "btn btn-primary"%>
+                    <%= link_to "Search New Stock", new_stock_path, class: "fw-bold btn btn-primary"%>
                 </div>
                 <hr/>
             </div>
@@ -38,8 +38,8 @@
                         <% else %>
                             <td class="text-center text-danger"><%= @quotes[i].change_percent_s %><td>
                         <% end %>
-                        <td><%= link_to "Buy", buy_stock_path(user_stock.stock.symbol), class: "btn btn-success" %></td>
-                        <td><%= link_to "Sell", sell_stock_path(user_stock.stock.symbol), class: "btn btn-danger" %></td>
+                        <td><%= link_to "Buy", buy_stock_path(user_stock.stock.symbol), class: "fw-semibold btn btn-success" %></td>
+                        <td><%= link_to "Sell", sell_stock_path(user_stock.stock.symbol), class: "fw-semibold btn btn-danger" %></td>
                     </tr>
                 <% end %>
             </tbody>
