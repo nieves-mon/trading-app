@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="col text-center d-grid gap-2 col-4 mx-auto">
-                        <%= f.submit label, class: "btn btn-success" %>
+                        <%= f.submit label, class: "btn #{kind == "buy" ? 'btn-success' : 'btn-danger'}" %>
                     </div>
                 <% end %>
             </div>
