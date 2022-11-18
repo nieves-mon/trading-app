@@ -8,6 +8,9 @@
                 <div class="col-md-auto">
                     <%= link_to "Search New Stock", new_stock_path, class: "fw-bold btn btn-primary"%>
                 </div>
+                <div class="col text-end fs-2 fw-semibold">
+                    Total: $<%= @total_amount.round(2) %>
+                </div>
                 <hr/>
             </div>
         </div>
@@ -20,7 +23,7 @@
                     <th scope="col" class="text-center">Latest Price</th>
                     <th scope="col" class="text-center">Total Amount</th>
                     <th scope="col" class="text-center">Change %</th>
-                    <th scope="col" colspan=2></th>
+                    <th scope="col" colspan=3></th>
                 </tr>
             </thead>
             <tbody>

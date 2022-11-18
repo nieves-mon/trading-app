@@ -9,9 +9,12 @@ class TradersController < ApplicationController
     begin
       @quotes = @user_stocks.map { |user_stock| @client.quote(user_stock.stock.symbol)}
     rescue IEX::Errors::SymbolNotFoundError
-        flash[:danger] = "Symbol not found. Please input a valid symbol."
-        render :new
+      flash[:danger] = "Symbol not found. Please input a valid symbol."
+      render :new
     end
+
+    @total_amount = 0
+    @user_stocks.each_with_index { |stock, i| @total_amount += stock.quantity * @quotes[i].latest_price}
   end
 
   def trending_stocks
