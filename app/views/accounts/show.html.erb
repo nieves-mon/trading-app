@@ -1,7 +1,7 @@
 <div class="container mt-4">
 <div class="row d-flex justify-content-center border px-4 py-4 rounded-4 bg-light">
 
-<h1>Account Details</h1>
+<h1 class="fw-bold">Account Details</h1>
 <p><%= link_to "Edit", edit_account_path(@account), class:"btn btn-warning" %> <%= link_to "Delete", account_path(@account), data: { turbo_method: :delete, turbo_confirm: "Are you sure to proceed?" }, class:"btn btn-danger" %></p>
 
 <table class="table">
@@ -21,7 +21,7 @@
     <td><b>Confirmation Status:</b></td>
     <td><%= @account.confirmed_at.in_time_zone('Singapore').strftime("%b %d, %Y @ %l:%M %p") %></td>
     </tr>
-    
+
 <% else %>
     <tr>
         <td><b>Account Status:</b></td>

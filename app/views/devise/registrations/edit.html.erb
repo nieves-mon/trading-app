@@ -3,7 +3,7 @@
 <div class="col-md-6">
 <div class="border rounded-4 bg-light px-4 py-4" id="form1">
 
-<h2>Edit User Profile</h2>
+<h2 class="fw-bold">Edit User Profile</h2>
 <hr/>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { "data-turbo": "false", method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
