@@ -4,11 +4,14 @@
 <div class="border rounded-4 bg-light px-4 py-4" id="form1">
 <h1 class="fw-bold">Edit Trader Account</h1>
 <hr/>
-<%= form_with(scope: @account, url: account_path, method: 'put' ) do |f| %>
+<%= form_with(scope: @account, url: account_path, method: 'put', data: { turbo: false }) do |f| %>
 
   <div class="form-outline mb-4">
-    <%= f.label :email, class:"form-label" %><br />
+    <%= f.label :email, class:"form-label" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"form2Example1", class:"form-control" %>
+    <% @account.errors.full_messages_for(:email).each do |message| %>
+        <div class="error-msg" style="color:red;"><%= message %></div>
+    <% end %>
   </div>
 
   <div class="form-outline mb-4">

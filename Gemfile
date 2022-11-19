@@ -75,3 +75,5 @@ gem "devise"
 gem 'iex-ruby-client'
 gem 'bootstrap', '~> 5.2.2'
 gem 'jquery-rails'
+
+gem "byebug", "~> 11.1"

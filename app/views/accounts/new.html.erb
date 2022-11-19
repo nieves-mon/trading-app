@@ -4,24 +4,39 @@
 <div class="border rounded-4 bg-light px-4 py-4" id="form1">
 <h1 class="fw-bold">New Trader Account</h1>
 <hr/>
-<%= form_with(scope: @account, url: accounts_path) do |f| %>
+<%= form_with(scope: @account, url: accounts_path, data: { turbo: false }) do |f| %>
 
   <div class="form-outline mb-4">
-    <%= f.label :email, class:"form-label" %><br />
+    <%= f.label :email, class:"form-label" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"form2Example1", class:"form-control" %>
+  
+    <% @account.errors.full_messages_for(:email).each do |message| %>
+      <div class="error-msg" style="color:red;"><%= message %></div>
+    <% end %>
+
   </div>
+
 
   <div class="form-outline mb-4">
     <%= f.label :password, class:"form-label" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password", id:"form2Exampl2", class:"form-control" %>
+
+    <% @account.errors.full_messages_for(:password).each do |message| %>
+      <div class="error-msg" style="color:red;"><%= message %></div>
+    <% end %>
+
   </div>
 
   <div class="form-outline mb-4">
-    <%= f.label :password_confirmation, class:"form-label" %><br />
+    <%= f.label :password_confirmation, class:"form-label" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", id:"form2Example2", class:"form-control" %>
+    <% @account.errors.full_messages_for(:password_confirmation).each do |message| %>
+      <div class="error-msg" style="color:red;"><%= message %></div>
+    <% end %>
+  
   </div>
 
   <div class="d-grid gap-2 col-6 mx-auto">
