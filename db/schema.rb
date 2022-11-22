@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_121053) do
     t.bigint "stock_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "amount"
+    t.decimal "amount", precision: 30, scale: 2
     t.index ["stock_id"], name: "index_transactions_on_stock_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
@@ -59,10 +59,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_121053) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "unconfirmed_email"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
     t.boolean "admin", default: false
     t.boolean "approved", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
