@@ -54,6 +54,9 @@ group :development, :test do
 
   # User RSpec for Tests
   gem 'rspec-rails', '~> 6.0.0'
+
+  # factory bot
+  gem 'factory_bot_rails'
 end
 
 group :development do

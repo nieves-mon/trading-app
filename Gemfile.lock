@@ -97,6 +97,11 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
     erubi (1.11.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faraday (1.10.2)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -282,6 +287,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  factory_bot_rails
   iex-ruby-client
   importmap-rails
   jbuilder
