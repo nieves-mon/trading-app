@@ -12,6 +12,7 @@ class TransactionsController < ApplicationController
 
     def sell_stock
         @transaction = Transaction.new
+        @user_stock = current_user.user_stocks.find_by(stock: @stock)
     end
 
     def save_transaction

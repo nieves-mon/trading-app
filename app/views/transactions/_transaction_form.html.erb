@@ -31,7 +31,7 @@
                                 <%= f.label :quantity, "Quantity:", class: "form-label fs-4 fw-semibold" %>
                             </div>
                             <div class="col">
-                                <%= f.number_field :quantity, class: "form-control fs-4", min: 1, value: 1 %>
+                                <%= f.number_field :quantity, class: "form-control fs-4", min: 1, value: 1, max: max_shares %>
                             </div>
                         </div>
                     </div>
