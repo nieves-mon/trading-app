@@ -10,7 +10,7 @@
 
 
           <div class="form-outline mb-4 field">
-            <%= f.label :password, "New password", class:"form-label fw-semibold" %><br />
+            <%= f.label :password, "New password", class:"form-label fw-semibold" %>
             <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> characters minimum)</em><br />
             <% end %>
@@ -18,7 +18,7 @@
           </div>
 
           <div class="form-outline mb-4 field">
-            <%= f.label :password_confirmation, "Confirm new password", class:"form-label fw-semibold" %><br />
+            <%= f.label :password_confirmation, "Confirm new password", class:"form-label fw-semibold" %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
           </div>
 
