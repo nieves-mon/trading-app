@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2022_11_22_121053) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2022_11_22_120631) do
+>>>>>>> Remove unused columns (price, change_percent) from stocks table
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,10 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_121053) do
   create_table "stocks", force: :cascade do |t|
     t.string "symbol"
     t.string "name"
-    t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "change_percent"
   end
 
   create_table "transactions", force: :cascade do |t|
