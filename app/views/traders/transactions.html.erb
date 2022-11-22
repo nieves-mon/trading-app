@@ -22,7 +22,11 @@
                 <td class="text-center"><%= transaction.quantity %></td>
                 <td class="text-center">$<%= transaction.price %></td>
                 <td class="text-center">$<%= transaction.amount %></td>
-                <td class="text-center"><%= transaction.kind %></td>
+                <% if transaction.buy? %>
+                    <td class="text-center text-success"><%= transaction.kind %></td>
+                <% else %>
+                    <td class="text-center text-danger"><%= transaction.kind %></td>
+                <% end %>
             </tr>
         <% end %>
     </tbody>
