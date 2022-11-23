@@ -4,7 +4,7 @@ FactoryBot.define do
       association :stock
       price { 100 }
       quantity { 10 }
-      amount {1000 }
+      amount { 1000 }
     end
 
     trait :buy do
