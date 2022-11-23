@@ -6,7 +6,6 @@ FactoryBot.define do
     approved { true }
     admin { false }
 
-    # Skips specific callback when building
     after(:build) do |user|
       user.class.skip_callback(:create)
     end
@@ -31,7 +30,6 @@ FactoryBot.define do
     approved { false }
     admin { true }   
 
-    # Skips specific callback when building
     after(:build) do |user|
       user.class.skip_callback(:create)
     end
