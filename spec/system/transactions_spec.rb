@@ -6,30 +6,30 @@ RSpec.describe "Transactions", type: :system do
   end
 
   #pending "add some scenarios (or delete) #{__FILE__}"
-    let(:buy_trader_account) { create(:transaction, :buy) }
-    let(:sell_trader_account) { create(:transaction, :sell) }
+    let(:buy_account) { create(:transaction, :buy) }
+    let(:sell_account) { create(:transaction, :sell) }
 
-  def buy_trader_login
-    login_as(buy_trader_account.user)
+  def buy_login
+    login_as(buy_account.user)
   end
 
-  def sell_trader_login
-    login_as(sell_trader_account.user)
+  def sell_login
+    login_as(sell_account.user)
   end
 
   it 'lets trader buy stocks' do
-    expect(buy_trader_account.user.admin).to eq(false)
-    buy_trader_login
-    visit buy_stock_path('AMZN')
-    fill_in 'transaction[quantity]', with: 10
+    expect(buy_account.user.admin).to eq(false)
+    buy_login
+    visit buy_stock_path(buy_account.stock.symbol)
+    fill_in 'transaction[quantity]', with: buy_account.quantity
     expect { click_on 'Buy Stock' }.to change(Transaction, :count).by(1)
   end
 
   it 'lets trader sell stocks' do
-    expect(sell_trader_account.user.admin).to eq(false)
-    sell_trader_login
-    visit sell_stock_path(sell_trader_account.stock.symbol)
-    fill_in 'transaction[quantity]', with: sell_trader_account.quantity
+    expect(sell_account.user.admin).to eq(false)
+    sell_login
+    visit sell_stock_path(sell_account.stock.symbol)
+    fill_in 'transaction[quantity]', with: sell_account.quantity
     expect { click_on 'Sell Stock' }.to change(Transaction, :count).by(1)
   end
 

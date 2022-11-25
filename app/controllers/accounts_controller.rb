@@ -1,13 +1,13 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin
+  before_action :set_account, only: [:show, :edit, :update, :destroy,:approve]
 
   def index
     @accounts = User.where(admin:false)
   end
 
   def show
-    @account = User.find(params[:id])
   end
 
   def new
@@ -26,11 +26,9 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = User.find(params[:id])
   end
 
   def update
-    @account = User.find(params[:id])
     @account.skip_reconfirmation!
     if @account.update(account_params)
       redirect_to account_path(@account), notice: "Account successfully updated"
@@ -40,7 +38,6 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account = User.find(params[:id])
     @account.destroy
     redirect_to accounts_path, notice: "Account successfully deleted"
   end
@@ -50,7 +47,6 @@ class AccountsController < ApplicationController
   end
 
   def approve
-    @account = User.find(params[:id])
     @account.skip_confirmation!
     if @account.update(approved:true)
       UserMailer.with(user: @account).approved_email.deliver_later
@@ -59,6 +55,10 @@ class AccountsController < ApplicationController
   end
 
   private
+
+  def set_account
+    @account = User.find(params[:id])
+  end
 
   def account_params
     params.require(:user).permit(:email,:password, :approved, :password_confirmation)
