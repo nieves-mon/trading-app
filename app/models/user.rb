@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
 
-  has_many :transactions
-  has_many :user_stocks
+  has_many :transactions, dependent: :delete_all
+  has_many :user_stocks, dependent: :delete_all
 
 end
