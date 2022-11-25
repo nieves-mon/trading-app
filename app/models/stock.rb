@@ -4,4 +4,5 @@ class Stock < ApplicationRecord
     has_many :user_stocks, dependent: :delete_all
 
     validates :symbol, :name, presence: true
+    validates :symbol, uniqueness: true
 end
