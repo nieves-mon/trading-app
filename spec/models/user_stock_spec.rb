@@ -11,6 +11,10 @@ RSpec.describe UserStock, type: :model do
     it "is valid with complete attribute and quantity is more than 0" do
       expect(UserStock.new(user: user, stock: stock, quantity: 4)).to be_valid
     end
+    it "defaults quantity to 0 if not provided" do
+      user_stock = UserStock.new(user: user, stock: stock)
+      expect(user_stock.quantity).to eq(0)
+    end
   end
 
   context "when params are invalid" do
