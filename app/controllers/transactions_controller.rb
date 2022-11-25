@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-    before_action :authenticate_user!
     before_action :authorize_trader
     before_action :set_stock
     before_action :initialize_iex_client, except: [:save_transaction]
@@ -19,23 +18,18 @@ class TransactionsController < ApplicationController
         @transaction = current_user.transactions.build(transaction_params)
         @transaction.amount = transaction_params[:quantity].to_i * transaction_params[:price].to_f
 
-        if @transaction.save
-            @user_stock = current_user.user_stocks.find_by(stock: @stock)
+        @user_stock = current_user.user_stocks.find_or_create_by(stock: @stock)
+        new_quantity = @user_stock.calculate_new_quantity(@transaction.quantity, @transaction.kind)
 
-            if @user_stock
-                new_quantity = @user_stock.quantity
-                @transaction.buy? ? new_quantity += @transaction.quantity : new_quantity -= @transaction.quantity
-                @user_stock.update(stock: @stock, quantity: new_quantity)
-            else
-                @user_stock = current_user.user_stocks.build(stock: @stock, quantity: @transaction.quantity)
-                @user_stock.save
-            end
-
+        if @transaction.save && @user_stock.update(stock: @stock, quantity: new_quantity)
             flash[:success] = "You successfully #{@transaction.buy? ? 'bought' : 'sold'} #{@transaction.quantity} share#{'s' if @transaction.quantity > 1} of #{@stock.symbol} stock!"
             redirect_to stock_path(@stock.symbol)
         else
-            flash[:alert] = "Something went wrong"
-            render :buy_stock
+            if @transaction.buy?
+                render buy_stock_path(@stock.symbol)
+            else
+                render sell_stock_path(@stock.symbol)
+            end
         end
     end
 
