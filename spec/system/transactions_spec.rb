@@ -11,7 +11,7 @@ RSpec.describe "Transactions", type: :system do
 
   context "trader transactions" do
     user = FactoryBot.create(:user)
-    stock = FactoryBot.create(:stock)
+    stock = Stock.create(symbol: 'TSLA', name: 'Tesla Inc.')
 
     it 'lets trader buy stocks' do
       expect(user.admin).to eq(false)

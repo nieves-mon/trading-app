@@ -11,7 +11,7 @@ RSpec.describe "Traders", type: :system do
 
   context "traders' account" do
     user = FactoryBot.create(:user)
-    stock = FactoryBot.create(:stock)
+    stock = Stock.create(symbol: 'MSFT', name: 'Microsoft Corporation')
 
     it 'lets you show trending stocks' do
       expect(user.admin).to eq(false)
