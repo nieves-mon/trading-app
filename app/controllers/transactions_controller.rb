@@ -6,12 +6,11 @@ class TransactionsController < ApplicationController
 
     def buy_stock
         @transaction = Transaction.new
-
     end
 
     def sell_stock
         @transaction = Transaction.new
-        @user_stock = current_user.user_stocks.find_by(stock: @stock)
+        @user_stock = current_user.user_stocks.find_or_initialize_by(stock: @stock)
     end
 
     def save_transaction
@@ -26,9 +25,9 @@ class TransactionsController < ApplicationController
             redirect_to stock_path(@stock.symbol)
         else
             if @transaction.buy?
-                render buy_stock_path(@stock.symbol)
+                redirect_to :buy_stock
             else
-                render sell_stock_path(@stock.symbol)
+                redirect_to :sell_stock
             end
         end
     end
