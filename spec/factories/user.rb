@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user, class: 'User' do
-    email { 'test@test.com' }
+    email { Faker::Internet.email }
     password { '123456'}
     confirmed_at { Date.today }
     approved { true }
@@ -16,23 +16,11 @@ FactoryBot.define do
   end
 
   trait :admin do
-    email { 'admin@admin.com' }
-    password { 'password' }
-    confirmed_at { Date.today }
-    approved { true }
     admin { true }
   end
 
-  factory :pending_user, class: 'User' do
-    email { 'pending@test.com' }
-    password { 'pending' }
-    confirmed_at { Date.today }
+  trait :pending do
     approved { false }
-    admin { true }   
-
-    after(:build) do |user|
-      user.class.skip_callback(:create)
-    end
   end
 
 end
