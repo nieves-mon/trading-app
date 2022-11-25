@@ -21,22 +21,22 @@ RSpec.describe Transaction, type: :model do
 
   context "when params are incomplete" do
     it "is not valid without kind" do
-      expect(Transaction.new(kind: nil, quantity: 1, price: 89.9, amount: 89.9, stock: stock, user: user)).not_to be_valid
+      expect(Transaction.new(quantity: 1, price: 89.9, amount: 89.9, stock: stock, user: user)).not_to be_valid
     end
     it "is not valid without quantity" do
-      expect(Transaction.new(kind: 0, quantity: nil, price: 89.9, amount: 89.9, stock: stock, user: user)).not_to be_valid
+      expect(Transaction.new(kind: 0, price: 89.9, amount: 89.9, stock: stock, user: user)).not_to be_valid
     end
     it "is not valid without price" do
-      expect(Transaction.new(kind: 0, quantity: 1, price: nil, amount: 89.9, stock: stock, user: user)).not_to be_valid
+      expect(Transaction.new(kind: 0, quantity: 1, amount: 89.9, stock: stock, user: user)).not_to be_valid
     end
     it "is not valid without amount" do
-      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, amount: nil, stock: stock, user: user)).not_to be_valid
+      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, stock: stock, user: user)).not_to be_valid
     end
     it "is not valid without user" do
-      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, amount: 89.9, stock: stock, user: nil)).not_to be_valid
+      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, amount: 89.9, stock: stock)).not_to be_valid
     end
     it "is not valid without stock" do
-      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, amount: 89.9, stock: nil, user: user)).not_to be_valid
+      expect(Transaction.new(kind: 0, quantity: 1, price: 89.9, amount: 89.9, user: user)).not_to be_valid
     end
   end
 end
