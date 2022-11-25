@@ -18,7 +18,7 @@ class TransactionsController < ApplicationController
         @transaction.amount = @transaction.calculate_amount
 
         @user_stock = current_user.user_stocks.find_or_create_by(stock: @stock)
-        new_quantity = @user_stock.calculate_new_quantity(@transaction.quantity, @transaction.kind)
+        new_quantity = @transaction.calculate_new_quantity(@user_stock.quantity)
 
         if @transaction.save && @user_stock.update(stock: @stock, quantity: new_quantity)
             flash[:success] = "You successfully #{@transaction.buy? ? 'bought' : 'sold'} #{@transaction.quantity} share#{'s' if @transaction.quantity > 1} of #{@stock.symbol} stock!"
