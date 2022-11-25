@@ -9,26 +9,25 @@ RSpec.describe "Transactions", type: :system do
     login_as(user)
   end
 
-  it 'lets trader buy stocks' do
+  context "trader transactions" do
     user = FactoryBot.create(:user)
     stock = FactoryBot.create(:stock)
 
-    expect(user.admin).to eq(false)
-    trader_login(user)
-    visit buy_stock_path(stock.symbol)
-    fill_in 'transaction[quantity]', with: 10
-    expect { click_on 'Buy Stock' }.to change(Transaction, :count).by(1)
-  end
+    it 'lets trader buy stocks' do
+      expect(user.admin).to eq(false)
+      trader_login(user)
+      visit buy_stock_path(stock.symbol)
+      fill_in 'transaction[quantity]', with: 10
+      expect { click_on 'Buy Stock' }.to change(Transaction, :count).by(1)
+    end
 
-  it 'lets trader sell stocks' do
-    user = FactoryBot.create(:user)
-    stock = FactoryBot.create(:stock)
-
-    expect(user.admin).to eq(false)
-    trader_login(user)
-    visit sell_stock_path(stock.symbol)
-    fill_in 'transaction[quantity]', with: 10
-    expect { click_on 'Sell Stock' }.to change(Transaction, :count).by(1)
+    it 'lets trader sell stocks' do
+      expect(user.admin).to eq(false)
+      trader_login(user)
+      visit sell_stock_path(stock.symbol)
+      fill_in 'transaction[quantity]', with: 10
+      expect { click_on 'Sell Stock' }.to change(Transaction, :count).by(1)
+    end
   end
 
 end
