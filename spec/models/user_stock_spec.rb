@@ -20,13 +20,13 @@ RSpec.describe UserStock, type: :model do
   end
 
   context "when params are incomplete" do
-    it "is not valid without user" do
+    it "is not valid if user is nil" do
       expect(UserStock.new(user: nil, stock: stock, quantity: 1)).not_to be_valid
     end
-    it "is not valid without stock" do
+    it "is not valid if stock is nil" do
       expect(UserStock.new(user: user, stock: nil, quantity: 1)).not_to be_valid
     end
-    it "is not valid without quantity" do
+    it "is not valid if quantity is nil" do
       expect(UserStock.new(user: user, stock: stock, quantity: nil)).not_to be_valid
     end
   end
