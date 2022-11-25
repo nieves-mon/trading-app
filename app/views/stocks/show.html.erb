@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="card-footer text-muted fw-semibold fs-5">
-          You have <%= @shares %> shares
+          <%= "You own #{@shares} share#{'s' if @shares > 1}" %>
         </div>
       </div>
     </div>
