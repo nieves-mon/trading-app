@@ -14,11 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_120631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "stocks", force: :cascade do |t|
     t.string "symbol"
     t.string "name"
@@ -57,10 +52,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_22_120631) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "unconfirmed_email"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.boolean "admin", default: false
     t.boolean "approved", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
