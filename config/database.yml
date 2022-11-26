@@ -81,8 +81,8 @@ test:
 #
 production:
   <<: *default
-  host: containers-us-west-123.railway.app
-  username: postgres
-  password: BCPjDAp57KEr8mKECqBJ
-  port: 7589
+  host: ENV['PGHOST']
+  username: ENV['PGUSER']
+  password: ENV['PGPASSWORD']
+  port: ENV['PGPORT']
   database: railway
