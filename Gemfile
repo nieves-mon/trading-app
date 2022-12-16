@@ -84,3 +84,5 @@ gem 'iex-ruby-client'
 gem 'jquery-rails'
 
 gem "byebug", "~> 11.1"
+
+gem "finnhub_ruby", "~> 1.1"
